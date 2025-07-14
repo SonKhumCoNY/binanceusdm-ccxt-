@@ -6,7 +6,7 @@ import datetime
 import json
 import os
 
-# --- ĐỌC CẤU HÌNH TỪ FILE ---
+
 def load_config():
     config_path = 'config.json'
     if not os.path.exists(config_path):
@@ -15,7 +15,7 @@ def load_config():
     with open(config_path, 'r') as f:
         config = json.load(f)
     
-    # Validate required fields
+
     required_fields = ['symbol', 'leverage', 'margin_mode', 'api_key', 'secret']
     for field in required_fields:
         if field not in config:
@@ -23,11 +23,11 @@ def load_config():
     
     return config
 
-# --- KẾT NỐI SÀN GIAO DỊCH ---
+
 config = load_config()
 symbol = config['symbol']
 
-# Kết nối trực tiếp đến Binance USDM
+
 exchange = ccxt.binanceusdm({
     'apiKey': config['api_key'],
     'secret': config['secret'],
@@ -36,7 +36,7 @@ exchange = ccxt.binanceusdm({
     }
 })
 exchange.options['adjustForTimeDifference'] = True
-# Thiết lập đòn bẩy và chế độ margin
+
 try:
     exchange.set_leverage(config['leverage'], symbol)
     exchange.set_margin_mode(config['margin_mode'], symbol)
@@ -74,7 +74,7 @@ while True:
             trade_long = None
 
 
-        time.sleep(5)  # Chờ 5 giây trước khi lặp lại
+        time.sleep(5) 
     except Exception as e:
         print(f"Lỗi: {e}")
         time.sleep(5)
