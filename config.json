@@ -1,0 +1,12 @@
+{
+    "symbol": "DOGE/USDT", 
+    "leverage": 20,
+    "margin_mode": "cross",
+    "rsi": 2,
+    "rsi_upper_band": 70,
+    "rsi_lower_band": 30,
+    "vol": 30,
+    "time": "1m",
+    "api_key": "...",
+    "secret": "..."
+}
